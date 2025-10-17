@@ -50,7 +50,7 @@ class SignUpActivity : AppCompatActivity() {
 
             // Validate that all fields are filled.
             if (name.isEmpty() || address.isEmpty() || phone.isEmpty() || email.isEmpty() || password.isEmpty()) {
-                Toast.makeText(this, getString(R.string.please_fill_all_fields), Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Please fill all fields", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
@@ -65,11 +65,10 @@ class SignUpActivity : AppCompatActivity() {
                         val user = User(name, address, phone)
 
                         // Save the user's information to the Firebase Realtime Database.
-                        database.reference.child("users
-").child(uid).setValue(user)
+                        database.reference.child("users").child(uid).setValue(user)
 
                         // Display a success message and navigate to the LandingActivity.
-                        Toast.makeText(this, getString(R.string.registration_successful), Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this, "Registration successful", Toast.LENGTH_SHORT).show()
                         val intent = Intent(this, LandingActivity::class.java)
                         startActivity(intent)
                         overridePendingTransition(R.anim.fade_in, R.anim.fade_out)
@@ -77,7 +76,7 @@ class SignUpActivity : AppCompatActivity() {
                     } else {
                         // If user creation fails, log the error and display a message to the user.
                         Log.w("SignUpActivity", "createUserWithEmail:failure", task.exception)
-                        Toast.makeText(baseContext, getString(R.string.authentication_failed, task.exception?.message), Toast.LENGTH_LONG).show()
+                        Toast.makeText(baseContext, "Authentication failed: ${task.exception?.message}", Toast.LENGTH_LONG).show()
                     }
                 }
         }
