@@ -75,10 +75,10 @@ class LandingActivity : AppCompatActivity() {
                     etPhone.setText(userData?.phone)
                     etAddress.setText(userData?.address)
                 }else{
-                    Toast.makeText(this,"User Not Found",Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this,getString(R.string.user_not_found),Toast.LENGTH_SHORT).show()
                 }
             }.addOnFailureListener{
-                Toast.makeText(this,"Failed to get user info",Toast.LENGTH_SHORT).show()
+                Toast.makeText(this,getString(R.string.failed_to_get_user_info),Toast.LENGTH_SHORT).show()
             }
         }
 
@@ -100,7 +100,7 @@ class LandingActivity : AppCompatActivity() {
 
             // Validate that the fields are not empty.
             if (name.isEmpty() || phone.isEmpty() || address.isEmpty()) {
-                Toast.makeText(this, "Please fill all fields", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.please_fill_all_fields), Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
@@ -114,7 +114,7 @@ class LandingActivity : AppCompatActivity() {
             database.reference.child("users").child(uid).setValue(updatedUser)
                 .addOnSuccessListener {
                     // On success, show a confirmation message.
-                    Toast.makeText(this, "Profile updated successfully", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, getString(R.string.profile_updated_successfully), Toast.LENGTH_SHORT).show()
                     // Disable the input fields again.
                     setFieldsEnabled(false)
                     // Show the edit button and hide the save button.
@@ -123,7 +123,7 @@ class LandingActivity : AppCompatActivity() {
                 }
                 .addOnFailureListener {
                     // On failure, show an error message.
-                    Toast.makeText(this, "Failed to update profile", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, getString(R.string.failed_to_update_profile), Toast.LENGTH_SHORT).show()
                 }
         }
 

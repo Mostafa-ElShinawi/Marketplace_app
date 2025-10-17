@@ -17,7 +17,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:text="Welcome!"
+        android:text="@string/welcome"
         android:textColor="@color/textColor"
         android:textSize="32sp" />
 

@@ -40,7 +40,7 @@ class LoginActivity : AppCompatActivity() {
 
             // Validate that the email and password fields are not empty.
             if (email.isEmpty() || password.isEmpty()) {
-                Toast.makeText(this, "Please fill all fields", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.please_fill_all_fields), Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
@@ -56,7 +56,7 @@ class LoginActivity : AppCompatActivity() {
                     } else {
                         // If sign-in fails, log the error and display a message to the user.
                         Log.w("LoginActivity", "signInWithEmail:failure", task.exception)
-                        Toast.makeText(baseContext, "Authentication failed: ${task.exception?.message}", Toast.LENGTH_LONG).show()
+                        Toast.makeText(baseContext, getString(R.string.authentication_failed, task.exception?.message), Toast.LENGTH_LONG).show()
                     }
                 }
         }
